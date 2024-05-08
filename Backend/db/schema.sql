@@ -9,3 +9,7 @@ CREATE TABLE IF NOT EXISTS users (
     last_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     type TEXT NOT NULL DEFAULT 'user'
 );
+
+
+
+
