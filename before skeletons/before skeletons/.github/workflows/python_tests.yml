@@ -1,0 +1,32 @@
+name: Backend Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+      - backend/**
+  pull_request:
+      paths:
+      - backend/**
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.12"
+    - name: Install dependencies
+      run: |
+        pip install -r backend/requirements.txt
+    - name: Test with pytest
+      run: |
+        cd backend
+        python db/db.py
+        pytest
